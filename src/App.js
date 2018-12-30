@@ -5,6 +5,7 @@ import Navigation from './components/Navigation/Navigation'
 import Logo from './components/Logo/Logo'
 import Rank from './components/Rank/Rank'
 import ImageURLForm from './components/ImageURLForm/ImageURLForm'
+import FaceRecognitionBox from './components/FaceRecognitionBox/FaceRecognitionBox'
 import './App.css';
 import 'tachyons'
 
@@ -39,7 +40,9 @@ class App extends Component {
 
   onButtonSubmit() {
     app.models.predict(
-      "a403429f2ddf4b49b307e318f00e528b", "https://samples.clarifai.com/face-det.jpg")
+      Clarifai.COLOR_MODEL,
+      'https://samples.clarifai.com/face-det.jpg'
+      )
       .then(
         function(response) {
           console.log(response)
@@ -63,7 +66,7 @@ class App extends Component {
           onInputChange={this.onInputChange}
           onButtonSubmit={this.onButtonSubmit}
         />
-        { /*<faceRecognitionBox /> */}
+        <FaceRecognitionBox />
       </div>
     );
   }
