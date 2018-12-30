@@ -2,7 +2,7 @@ import React from 'react'
 
 const FaceRecognitionBox = ({imageUrl}) => {
   return (
-    <div>
+    <div className='center'>
       <img alt='' src={imageUrl} />
     </div>
   )
