@@ -35,7 +35,8 @@ class App extends Component {
       input: '',
       imageUrl: '',
       faceBoxes: [],
-      route: 'signin'
+      route: 'signin',
+      inSignin: false
     }
   }
 
@@ -82,17 +83,22 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
+    if(route === 'home') {
+      this.setState({isSignin: true})
+    } else if (route === 'signin') {
+      this.setState({isSignin: false})
+    }
     this.setState({route})
   }
 
   render() {
-    const { route } = this.state
+    const { route, isSignin } = this.state
     return (
       <div className="App">
         <Particles className='particles'
           params = {particlesConfig}
         />
-        <Navigation onRouteChange={this.onRouteChange} />
+        <Navigation onRouteChange={this.onRouteChange} isSignin={isSignin}/>
         {
           route === 'home'
           ? <div>
