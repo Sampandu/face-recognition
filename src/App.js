@@ -36,7 +36,13 @@ class App extends Component {
       imageUrl: '',
       faceBoxes: [],
       route: 'signin',
-      inSignin: false
+      inSignin: false,
+      user: {
+        name: '',
+        email: '',
+        submition: 0,
+        join: ''
+      }
     }
   }
 
@@ -91,8 +97,14 @@ class App extends Component {
     this.setState({route})
   }
 
+  loadUser = (data) => {
+    this.setState({
+      user: Object.assign(this.state.user, data)
+    })
+  }
+
   render() {
-    const { route, isSignin } = this.state
+    const { route, isSignin, user } = this.state
     return (
       <div className="App">
         <Particles className='particles'
@@ -103,7 +115,7 @@ class App extends Component {
           route === 'home'
           ? <div>
               <Logo />
-              <Rank />
+              <Rank user={user} />
               <ImageURLForm
                 onInputChange={this.onInputChange}
                 onButtonSubmit={this.onButtonSubmit}
@@ -113,7 +125,7 @@ class App extends Component {
           : (
             route === 'signin'
             ? <Signin onRouteChange={this.onRouteChange} />
-            : <Register onRouteChange={this.onRouteChange} />
+            : <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
           )
         }
       </div>
