@@ -38,6 +38,7 @@ class App extends Component {
       route: 'signin',
       inSignin: false,
       user: {
+        id: '',
         name: '',
         email: '',
         submition: 0,
@@ -84,7 +85,23 @@ class App extends Component {
       Clarifai.FACE_DETECT_MODEL,
       this.state.input
       )
-      .then(response => this.displayFaceBoxes(this.calculateFaceLocation(response)))
+      .then(response => {
+        if(response) {
+          fetch('http://localhost:3001/image', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: this.state.user.id
+            })
+          })
+          .then(response => response.json())
+          .then(submition => this.setState({user: Object.assign(this.state.user, {submition})}))
+          .catch(err => console.log(err))
+        }
+        this.displayFaceBoxes(this.calculateFaceLocation(response))
+      })
       .catch(err => console.err)
   }
 
