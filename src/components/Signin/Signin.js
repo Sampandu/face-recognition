@@ -27,7 +27,10 @@ class Signin extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        if(data === 'success') this.props.onRouteChange('home')
+        if(data) {
+          this.props.onRouteChange('home')
+          this.props.loadUser(data)
+        }
         else alert('email or password doesn\'t match')
       })
       .catch(err => console.log(err))
