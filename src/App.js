@@ -28,23 +28,25 @@ const app = new Clarifai.App({
  });
 
 
+const initialState = {
+  input: '',
+  imageUrl: '',
+  faceBoxes: [],
+  route: 'signin',
+  isSignin: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    submition: 0,
+    join: ''
+  }
+}
+
 class App extends Component {
   constructor() {
     super()
-    this.state = {
-      input: '',
-      imageUrl: '',
-      faceBoxes: [],
-      route: 'signin',
-      inSignin: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        submition: 0,
-        join: ''
-      }
-    }
+    this.state = initialState
   }
 
   onInputChange = (event) => {
@@ -109,7 +111,7 @@ class App extends Component {
     if(route === 'home') {
       this.setState({isSignin: true})
     } else if (route === 'signin') {
-      this.setState({isSignin: false})
+      this.setState(initialState)
     }
     this.setState({route})
   }
