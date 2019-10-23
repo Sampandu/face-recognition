@@ -47,6 +47,7 @@ class App extends Component {
     this.setState({ input: event.target.value });
   };
 
+  //calculate the position of the face box in the image
   calculateFaceLocation = data => {
     const faceDetection = data.outputs[0].data.regions;
     const inputImage = document.getElementById('inputImage');
@@ -75,9 +76,10 @@ class App extends Component {
     this.setState({ faceBoxes: boxes });
   };
 
+  //hit the 'imageurl' api in the backend
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch('http://localhost:3001/imageurl', {
+    fetch('https://still-forest-54612.herokuapp.com/imageurl', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -89,7 +91,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3001/image', {
+          fetch('https://still-forest-54612.herokuapp.com/image', {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
@@ -111,6 +113,7 @@ class App extends Component {
       .catch(err => console.err);
   };
 
+  //redirect to different page in terms of user's status
   onRouteChange = route => {
     if (route === 'home') {
       this.setState({ isSignin: true });

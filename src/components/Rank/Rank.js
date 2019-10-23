@@ -1,9 +1,10 @@
 import React from 'react';
 
 const Rank = ({ user }) => {
+  //if user doesn't signin, app will redirect visitor to the home page.
   return (
     <div>
-      {Object.keys(user).length === 0 ? (
+      {user.id !== '' ? (
         <div>
           <div className="f3 white">
             {`${user.name}, your current rank is ...`}
