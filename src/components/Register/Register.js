@@ -1,40 +1,41 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Register extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       name: '',
       email: '',
-      password: ''
-    }
+      password: '',
+    };
   }
 
-  onInputChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
-  }
+  onInputChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   onRegisterSubmit = () => {
-    fetch('http://localhost:3001/register', {
+    fetch('https://still-forest-54612.herokuapp.com/register', {
       method: 'post',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({    // data should be stringify
+      body: JSON.stringify({
+        // data should be stringify
         name: this.state.name,
         email: this.state.email,
-        password: this.state.password
-      })
+        password: this.state.password,
+      }),
     })
       .then(response => response.json())
       .then(data => {
-        if(data.id) {
-          this.props.loadUser(data)
-          this.props.onRouteChange('home')
+        if (data.id) {
+          this.props.loadUser(data);
+          this.props.onRouteChange('home');
         }
       })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -44,7 +45,9 @@ class Register extends Component {
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
               <legend className="f2 fw6 ph0 mh0">Register</legend>
               <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
+                <label className="db fw6 lh-copy f6" htmlFor="name">
+                  Name
+                </label>
                 <input
                   onChange={this.onInputChange}
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
@@ -54,7 +57,9 @@ class Register extends Component {
                 />
               </div>
               <div className="mt3">
-                <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+                <label className="db fw6 lh-copy f6" htmlFor="email-address">
+                  Email
+                </label>
                 <input
                   onChange={this.onInputChange}
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
@@ -64,10 +69,13 @@ class Register extends Component {
                 />
               </div>
               <div className="mv3">
-                <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+                <label className="db fw6 lh-copy f6" htmlFor="password">
+                  Password
+                </label>
                 <input
                   onChange={this.onInputChange}
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password"
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  type="password"
                   name="password"
                   id="password"
                 />
@@ -78,13 +86,14 @@ class Register extends Component {
                 onClick={this.onRegisterSubmit}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
-                value="Register" />
+                value="Register"
+              />
             </div>
           </div>
         </main>
       </article>
-    )
+    );
   }
 }
 
-export default Register
+export default Register;
