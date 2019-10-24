@@ -7,9 +7,9 @@
   "static/js/1.39fbf960.chunk.js.map": "/face-recognition/static/js/1.39fbf960.chunk.js.map",
   "runtime~main.js": "/face-recognition/static/js/runtime~main.00a7b039.js",
   "runtime~main.js.map": "/face-recognition/static/js/runtime~main.00a7b039.js.map",
-  "static/css/1.29764c55.chunk.css.map": "/face-recognition/static/css/1.29764c55.chunk.css.map",
-  "static/media/face.png": "/face-recognition/static/media/face.42e95c95.png",
   "static/css/main.a4196468.chunk.css.map": "/face-recognition/static/css/main.a4196468.chunk.css.map",
+  "static/media/face.png": "/face-recognition/static/media/face.42e95c95.png",
+  "static/css/1.29764c55.chunk.css.map": "/face-recognition/static/css/1.29764c55.chunk.css.map",
   "index.html": "/face-recognition/index.html",
   "precache-manifest.5935ffb72a48daf4b7671dcf495e9292.js": "/face-recognition/precache-manifest.5935ffb72a48daf4b7671dcf495e9292.js",
   "service-worker.js": "/face-recognition/service-worker.js"
